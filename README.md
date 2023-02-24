@@ -4,7 +4,7 @@ A simple python script to integrate wakatime into your polybar.
 
 ## Screenshots
 
-!()[https://raw.githubusercontent.com/KekOnTheWorld/polybar-wakatime/main/screenshots/screenshot_1.png]
+![](https://raw.githubusercontent.com/KekOnTheWorld/polybar-wakatime/main/screenshots/screenshot_1.png)
 
 ## Usage
 
