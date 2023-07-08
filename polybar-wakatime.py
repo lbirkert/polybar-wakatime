@@ -28,13 +28,16 @@ authorization = "Basic " + base64.b64encode(
     raw_api_key.encode("ascii")).decode("ascii")
 
 while True:
-    # Not using status bar because this one updates faster
-    r = requests.get(
-        f"{api_url}/users/current/summaries?range=Today",
-        headers={"Authorization": authorization},
-    )
+    try:
+        # Not using status bar because this one updates faster
+        r = requests.get(
+            f"{api_url}/users/current/summaries?range=Today",
+            headers={"Authorization": authorization},
+        )
 
-    if r.status_code == 200:
+        if r.status_code != 200:
+            raise "Invalid status code"
+
         body = r.json()
 
         total_seconds = body["cumulative_total"]["seconds"]
@@ -49,7 +52,7 @@ while True:
             ).strftime(msg_format).strip(),
             flush=True
         )
-    else:
-        print("Error fetching data")
+    except:
+        print("no data", flush=True)
 
     time.sleep(delay)
